@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Brave Addon</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <header class="header">
+    <div class="title-row">
+      <h1>Brave Addon</h1>
+      <code id="host-label" class="host-pill">Loading...</code>
+    </div>
+    <div class="scope-tabs" role="tablist" aria-label="Settings scope">
+      <button type="button" role="tab" id="tab-site" class="tab-btn" aria-selected="true" aria-controls="panel-controls">This site</button>
+      <button type="button" role="tab" id="tab-global" class="tab-btn" aria-selected="false" aria-controls="panel-controls">Global defaults</button>
+    </div>
+  </header>
+
+  <main id="panel-controls" role="tabpanel">
+    <div id="error-banner" class="notice notice-error" role="alert" hidden>
+      <span id="error-text">Failed to load settings.</span>
+    </div>
+
+    <div id="reload-banner" class="notice notice-info" role="status" hidden>
+      <span>Reload tab to apply changes.</span>
+      <button type="button" id="btn-reload" class="btn-inline">Reload tab</button>
+    </div>
+
+    <div class="toggle-list">
+      <label class="toggle-row" for="opt-braveCloak">
+        <span class="toggle-text">
+          <span class="toggle-title">Spoof Google Chrome</span>
+          <span class="toggle-desc">Hides Brave identity in JS, Workers, and Client Hints</span>
+        </span>
+        <input type="checkbox" id="opt-braveCloak" role="switch" class="switch">
+      </label>
+
+      <label class="toggle-row" for="opt-antiAdblock">
+        <span class="toggle-text">
+          <span class="toggle-title">Anti-Adblock Bypass</span>
+          <span class="toggle-desc">Masks adblock probes, bait checks, and walls</span>
+        </span>
+        <input type="checkbox" id="opt-antiAdblock" role="switch" class="switch">
+      </label>
+
+      <label class="toggle-row" for="opt-unlockInteraction">
+        <span class="toggle-text">
+          <span class="toggle-title">Unlock Copy &amp; Right-Click</span>
+          <span class="toggle-desc">Restores text selection, copy, and context menu</span>
+        </span>
+        <input type="checkbox" id="opt-unlockInteraction" role="switch" class="switch">
+      </label>
+
+      <label class="toggle-row" for="opt-keepAlive">
+        <span class="toggle-text">
+          <span class="toggle-title">Background Tab Keep-Alive</span>
+          <span class="toggle-desc">Keeps countdowns and visibility active in background</span>
+        </span>
+        <input type="checkbox" id="opt-keepAlive" role="switch" class="switch">
+      </label>
+    </div>
+  </main>
+
+  <footer class="footer" id="footer-actions" hidden>
+    <button type="button" id="btn-reset" class="btn-reset">Reset site overrides</button>
+  </footer>
+
+  <script src="popup.js"></script>
+</body>
+</html>
